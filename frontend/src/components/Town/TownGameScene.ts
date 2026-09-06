@@ -377,7 +377,7 @@ export default class TownGameScene extends Phaser.Scene {
     labels?.forEach(label => {
       if (label.x && label.y) {
         this.add.text(label.x, label.y, label.text.text, {
-          color: '#FFFFFF',
+          color: '#ffffff', 
           backgroundColor: '#000000',
         });
       }
@@ -421,7 +421,7 @@ export default class TownGameScene extends Phaser.Scene {
         font: '18px monospace',
         color: '#000000',
         // padding: {x: 20, y: 10},
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0ba96a', // changed color
       })
       .setDepth(6);
     this.coveyTownController.ourPlayer.gameObjects = {

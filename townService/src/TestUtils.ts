@@ -2,7 +2,9 @@ import { BroadcastOperator } from 'socket.io';
 
 import { mock, mockDeep, MockProxy } from 'jest-mock-extended';
 import { nanoid } from 'nanoid';
-import { SocketReservedEventsMap } from 'socket.io/dist/socket';
+
+// import { SocketReservedEventsMap } from 'socket.io/dist/socket';
+
 import {
   EventNames,
   EventParams,
@@ -24,6 +26,12 @@ import {
   TownEmitter,
   ViewingArea,
 } from './types/CoveyTownSocket';
+
+type SocketReservedEventsMap = {
+  disconnect: (reason: string) => void;
+  disconnecting: (reason: string) => void;
+  error: (err: Error) => void;
+};
 
 /**
  * Create a new conversation area using some random defaults
@@ -130,7 +138,7 @@ export function getEventListener<
       >;
     }
   }
-  throw new Error(`No event listener found for event ${eventName}`);
+  throw new Error(`No event listener found for event ${String(eventName)}`);
 }
 
 export class MockedPlayer {
